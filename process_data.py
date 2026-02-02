@@ -38,5 +38,8 @@ def main():
     fa_path=fa_path
     )
 
+    check_validity(source)
+
+
 if __name__ == "__main__":
     main()

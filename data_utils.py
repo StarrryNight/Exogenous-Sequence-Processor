@@ -35,6 +35,17 @@ def parse_folder(path: str):
             "npz_rev": rev,
             "fa": fa}
 
+def check_numpy_validity(path: str, chrom:str):
+    file = np.load(path)
+    if chrom not in file:
+        raise KeyError(f"invalid file {path} or chromosome {chrom}")
+
+def check_validity(source):
+    check_numpy_validity(source.npz_fwd, source.chrom)
+    check_numpy_validity(source.npz_rev, source.chrom)
+
+
+
 
 
 
