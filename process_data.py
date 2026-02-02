@@ -19,6 +19,7 @@ def parse_args():
 
 
 def main():
+    # Process arguments
     args = parse_args()
     if args.folder:
         res = parse_folder(args.folder)
@@ -30,6 +31,7 @@ def main():
         npz_rev = args.npz_rev
         fa_path = args.fasta
         
+    # Set up dataclass
     source = Source(
     name = args.name,
     chrom=args.chrom,
@@ -38,10 +40,12 @@ def main():
     fa_path=fa_path
     )
 
-    #Check if file passed are valid
+    # Check if file passed are valid
     check_validity(source)
+    # Extract coverage tracks
     extract_coverages(source)
-    print(source)
-
+    # Extract forward and reverse chromosome sequences
+    extract_chr_seq(source)
+    extract_rev_seq(source)
 if __name__ == "__main__":
     main()
