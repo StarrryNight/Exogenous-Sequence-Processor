@@ -1,4 +1,24 @@
 import os
+import numpy as np
+from dataclasses import dataclass
+
+
+# --- Data Classes ---
+@dataclass
+class Source:
+    name: str
+    npz_fwd: str
+    npz_rev: str
+    chrom: str
+    fa_path: str
+    cov_fwd: np.ndarray = None
+    cov_rev: np.ndarray = None
+    seq: str = None
+    start0: int = 0
+    end0: int = 0
+    X_fwd: np.ndarray = None
+    X_rc: np.ndarray = None
+
 def parse_folder(path: str):
     files = os.listdir(path) 
     if (len(files) == 3):
@@ -11,9 +31,9 @@ def parse_folder(path: str):
                 fa = path + f"/{file}"
             else:
                 raise "Parse folder failed! Please use file args"
-    return {"fwd_npz": fwd,
-            "rev_npz": rev,
-            "fa": fa},
+    return {"npz_fwd": fwd,
+            "npz_rev": rev,
+            "fa": fa}
 
 
 
