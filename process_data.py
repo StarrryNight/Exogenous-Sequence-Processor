@@ -47,5 +47,11 @@ def main():
     # Extract forward and reverse chromosome sequences
     extract_chr_seq(source)
     extract_rev_seq(source)
+
+
+    res = create_windows(source, 16384, 1000, 0.7,0.2,0.1)
+    print(res)
+
+
 if __name__ == "__main__":
     main()
