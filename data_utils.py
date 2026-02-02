@@ -44,6 +44,16 @@ def check_validity(source):
     check_numpy_validity(source.npz_fwd, source.chrom)
     check_numpy_validity(source.npz_rev, source.chrom)
 
+def extract_individual_coverage(path: str, chrom:str):
+    file = np.load(path)
+    return file[chrom]
+
+def extract_coverages(source):
+    source.cov_fwd = extract_individual_coverage(source.npz_fwd, source.chrom)
+    source.cov_rev = extract_individual_coverage(source.npz_rev, source.chrom)
+    
+
+
 
 
 

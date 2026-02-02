@@ -38,8 +38,10 @@ def main():
     fa_path=fa_path
     )
 
+    #Check if file passed are valid
     check_validity(source)
-
+    extract_coverages(source)
+    print(source)
 
 if __name__ == "__main__":
     main()
