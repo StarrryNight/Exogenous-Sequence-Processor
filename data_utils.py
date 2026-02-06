@@ -19,6 +19,7 @@ class Source:
     length: int = 0
     start0: int = 0
     end0: int = 0
+    windowsdf: pd.DataFrame = None
 
 def parse_folder(path: str):
     files = os.listdir(path) 
@@ -133,8 +134,9 @@ def create_windows(source, window_size, target_windows, train, val, test):
     
     # Create DataFrame
     df = pd.DataFrame(windows)
-    
+    source.windowsdf = df
     return df
+
 
 
 
